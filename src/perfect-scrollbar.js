@@ -371,27 +371,23 @@
         var shouldPrevent = false;
 
         function getDeltaFromEvent(e) {
-          var deltaX = e.originalEvent.deltaX;
-          var deltaY = -1 * e.originalEvent.deltaY;
+          var oe = e.originalEvent;
+          var deltaX = 0;
+          var deltaY = 0;
 
-          if (typeof deltaX === "undefined" || typeof deltaY === "undefined") {
-            // OS X Safari
-            deltaX = -1 * e.originalEvent.wheelDeltaX / 6;
-            deltaY = e.originalEvent.wheelDeltaY / 6;
-          }
-
-          if (e.originalEvent.deltaMode && e.originalEvent.deltaMode === 1) {
-            // Firefox in deltaMode 1: Line scrolling
-            deltaX *= 10;
-            deltaY *= 10;
-          }
-
-          if (deltaX !== deltaX && deltaY !== deltaY/* NaN checks */) {
-            // IE in some mouse drivers
+          if ('deltaX' in oe) {
+            deltaX = oe.deltaX;
+            deltaY = -oe.deltaY;
+          } else if ('wheelDeltaX' in oe) {
+            deltaX = -oe.wheelDeltaX / 120;
+            deltaY = oe.wheelDeltaY / 120;
+          } else if ('wheelDelta' in oe) {
             deltaX = 0;
-            deltaY = e.originalEvent.wheelDelta;
+            deltaY = oe.wheelDelta / 120;
+          } else if ('detail' in oe) {
+            deltaX = 0;
+            deltaY = -oe.detail / 3;
           }
-
           return [deltaX, deltaY];
         }
 
