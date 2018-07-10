@@ -954,9 +954,7 @@ var touch = function(i) {
 
   function touchStart(e) {
     console.log(i);
-    if (!i.settings.swipePropagation) {
-      e.stopPropagation();
-    }
+    resolveSwipePropagation(e);
 
     if (!shouldHandle(e)) {
       return;
@@ -1019,9 +1017,9 @@ var touch = function(i) {
   }
 
   function touchMove(e) {
-    if (!i.settings.swipePropagation) {
-      e.stopPropagation();
-    }
+
+    resolveSwipePropagation(e);
+
     if (shouldHandle(e)) {
       var touch = getTouch(e);
 
@@ -1052,9 +1050,9 @@ var touch = function(i) {
     }
   }
   function touchEnd(e) {
-    if (!i.settings.swipePropagation) {
-      e.stopPropagation();
-    }
+
+    resolveSwipePropagation(e);
+
     if (i.settings.swipeEasing) {
       clearInterval(easingLoop);
       easingLoop = setInterval(function() {
@@ -1080,6 +1078,21 @@ var touch = function(i) {
       }, 10);
     }
   }
+
+  function resolveSwipePropagation(e) {
+    if (!i.settings.swipePropagation && (isXScrollbarOnEdge() || isYScrollbarOnEdge())) {
+      e.stopPropagation();
+    }
+  }
+
+  function isXScrollbarOnEdge() {
+    return i.scrollbarXActive && (i.reach.x === 'end' || i.reach.x === 'start');
+  }
+
+  function isYScrollbarOnEdge() {
+    return i.scrollbarYActive && (i.reach.y === 'end' || i.reach.y === 'start');
+  }
+
   if (env.supportsTouch) {
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
