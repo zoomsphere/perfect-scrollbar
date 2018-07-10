@@ -951,7 +951,6 @@ var touch = function(i) {
   }
 
   function touchStart(e) {
-    console.log(i);
     resolveSwipePropagation(e);
 
     if (!shouldHandle(e)) {
