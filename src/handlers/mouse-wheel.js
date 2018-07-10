@@ -5,7 +5,6 @@ import { env } from '../lib/util';
 
 export default function(i) {
   const element = i.element;
-  console.warn("--- wheel", env);
   let shouldPrevent = false;
 
   function shouldPreventDefault(deltaX, deltaY) {
