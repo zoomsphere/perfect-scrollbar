@@ -145,6 +145,11 @@ export default function(i) {
 
   function touchMove(e) {
     if (shouldHandle(e)) {
+
+      if (!i.settings.swipePropagation) {
+        e.stopPropagation();
+      }
+
       const touch = getTouch(e);
 
       const currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
@@ -174,6 +179,9 @@ export default function(i) {
     }
   }
   function touchEnd() {
+    if (!i.settings.swipePropagation) {
+      e.stopPropagation();
+    }
     if (i.settings.swipeEasing) {
       clearInterval(easingLoop);
       easingLoop = setInterval(function() {
