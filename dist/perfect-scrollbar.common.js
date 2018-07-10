@@ -1041,7 +1041,7 @@ var touch = function(i) {
         speed.y = differenceY / timeGap;
         startTime = currentTime;
       }
-
+      console.log(e);
       if (shouldPrevent(differenceX, differenceY)) {
         e.preventDefault();
       }
