@@ -206,7 +206,7 @@ export default function(i) {
   }
 
   function resolveSwipePropagation(e) {
-    if (!i.settings.swipePropagation && (isXScrollbarOnEdge() || isYScrollbarOnEdge())) {
+    if (!i.settings.swipePropagation && !(isXScrollbarOnEdge() || isYScrollbarOnEdge())) {
       e.stopPropagation();
     }
   }
