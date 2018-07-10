@@ -1,5 +1,5 @@
 /*!
- * perfect-scrollbar v1.4.1
+ * perfect-scrollbar v1.4.2
  * (c) 2018 Hyunje Jun
  * @license MIT
  */
@@ -877,7 +877,6 @@ var wheel = function(i) {
 
 var touch = function(i) {
   console.warn("---", env);
-  alert("ok");
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
