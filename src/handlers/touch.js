@@ -10,7 +10,10 @@ export default function(i) {
 
   const element = i.element;
 
-  function shouldPrevent(deltaX, deltaY) {
+  function shouldPrevent(deltaX, deltaY, e) {
+    if (!e.cancelable) {
+      return false;
+    }
     const scrollTop = Math.floor(element.scrollTop);
     const scrollLeft = element.scrollLeft;
     const magnitudeX = Math.abs(deltaX);
@@ -168,8 +171,8 @@ export default function(i) {
         speed.y = differenceY / timeGap;
         startTime = currentTime;
       }
-      console.log(e);
-      if (shouldPrevent(differenceX, differenceY)) {
+
+      if (shouldPrevent(differenceX, differenceY, e)) {
         e.preventDefault();
       }
     }

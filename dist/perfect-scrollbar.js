@@ -887,7 +887,10 @@ var touch = function(i) {
 
   var element = i.element;
 
-  function shouldPrevent(deltaX, deltaY) {
+  function shouldPrevent(deltaX, deltaY, e) {
+    if (!e.cancelable) {
+      return false;
+    }
     var scrollTop = Math.floor(element.scrollTop);
     var scrollLeft = element.scrollLeft;
     var magnitudeX = Math.abs(deltaX);
@@ -1045,8 +1048,8 @@ var touch = function(i) {
         speed.y = differenceY / timeGap;
         startTime = currentTime;
       }
-      console.log(e);
-      if (shouldPrevent(differenceX, differenceY)) {
+
+      if (shouldPrevent(differenceX, differenceY, e)) {
         e.preventDefault();
       }
     }
