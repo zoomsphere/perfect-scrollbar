@@ -79,6 +79,7 @@ export default function(i) {
   }
 
   function touchStart(e) {
+    console.log(`test`, e);
     if (!shouldHandle(e)) {
       return;
     }
