@@ -956,6 +956,10 @@ var touch = function(i) {
     if (!shouldHandle(e)) {
       return;
     }
+    console.log("test");
+    if (!i.settings.swipePropagation) {
+      e.stopPropagation();
+    }
 
     var touch = getTouch(e);
 
@@ -1098,6 +1102,7 @@ var defaultSettings = function () { return ({
   suppressScrollX: false,
   suppressScrollY: false,
   swipeEasing: true,
+  swipePropagation: true,
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
