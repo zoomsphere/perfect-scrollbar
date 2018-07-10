@@ -5,6 +5,7 @@ import { env } from '../lib/util';
 
 export default function(i) {
   console.warn(`---`, env)
+  alert(`ok`)
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
@@ -86,7 +87,6 @@ export default function(i) {
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }
-    alert(`ok`)
     const touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;

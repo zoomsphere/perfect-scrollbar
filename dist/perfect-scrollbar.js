@@ -883,6 +883,7 @@ var wheel = function(i) {
 
 var touch = function(i) {
   console.warn("---", env);
+  alert("ok");
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
@@ -964,7 +965,6 @@ var touch = function(i) {
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }
-    alert("ok");
     var touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;
