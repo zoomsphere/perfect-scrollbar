@@ -1079,7 +1079,7 @@ var touch = function(i) {
       }, 10);
     }
   }
-
+  console.log("---", env);
   if (env.supportsTouch) {
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
