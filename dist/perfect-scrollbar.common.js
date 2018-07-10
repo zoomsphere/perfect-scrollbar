@@ -1,5 +1,5 @@
 /*!
- * perfect-scrollbar v1.4.0
+ * perfect-scrollbar v1.4.1
  * (c) 2018 Hyunje Jun
  * @license MIT
  */
@@ -954,15 +954,13 @@ var touch = function(i) {
   }
 
   function touchStart(e) {
-    console.warn("test", e);
     if (!shouldHandle(e)) {
       return;
     }
-    console.warn("test");
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }
-
+    alert("ok");
     var touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;

@@ -80,15 +80,13 @@ export default function(i) {
   }
 
   function touchStart(e) {
-    console.warn(`test`, e);
     if (!shouldHandle(e)) {
       return;
     }
-    console.warn(`test`);
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }
-
+    alert(`ok`)
     const touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;
