@@ -958,11 +958,12 @@ var touch = function(i) {
   }
 
   function touchStart(e) {
+    if (!i.settings.swipePropagation) {
+      console.log("---touchStart stop");
+      e.stopPropagation();
+    }
     if (!shouldHandle(e)) {
       return;
-    }
-    if (!i.settings.swipePropagation) {
-      e.stopPropagation();
     }
     var touch = getTouch(e);
 
@@ -1022,6 +1023,10 @@ var touch = function(i) {
   }
 
   function touchMove(e) {
+    if (!i.settings.swipePropagation) {
+      console.log("---touchMove stop");
+      e.stopPropagation();
+    }
     if (shouldHandle(e)) {
       var touch = getTouch(e);
 
@@ -1051,7 +1056,11 @@ var touch = function(i) {
       }
     }
   }
-  function touchEnd() {
+  function touchEnd(e) {
+    if (!i.settings.swipePropagation) {
+      console.log("---touchEnd stop");
+      e.stopPropagation();
+    }
     if (i.settings.swipeEasing) {
       clearInterval(easingLoop);
       easingLoop = setInterval(function() {

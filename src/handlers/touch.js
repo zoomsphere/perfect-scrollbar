@@ -80,11 +80,12 @@ export default function(i) {
   }
 
   function touchStart(e) {
+    if (!i.settings.swipePropagation) {
+      console.log(`---touchStart stop`)
+      e.stopPropagation();
+    }
     if (!shouldHandle(e)) {
       return;
-    }
-    if (!i.settings.swipePropagation) {
-      e.stopPropagation();
     }
     const touch = getTouch(e);
 
@@ -144,12 +145,11 @@ export default function(i) {
   }
 
   function touchMove(e) {
+    if (!i.settings.swipePropagation) {
+      console.log(`---touchMove stop`)
+      e.stopPropagation();
+    }
     if (shouldHandle(e)) {
-
-      if (!i.settings.swipePropagation) {
-        e.stopPropagation();
-      }
-
       const touch = getTouch(e);
 
       const currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
@@ -178,8 +178,9 @@ export default function(i) {
       }
     }
   }
-  function touchEnd() {
+  function touchEnd(e) {
     if (!i.settings.swipePropagation) {
+      console.log(`---touchEnd stop`)
       e.stopPropagation();
     }
     if (i.settings.swipeEasing) {
