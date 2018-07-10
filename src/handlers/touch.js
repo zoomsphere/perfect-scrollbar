@@ -83,6 +83,10 @@ export default function(i) {
       return;
     }
 
+    if (!i.settings.swipePropagation) {
+      e.stopPropagation();
+    }
+
     const touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;

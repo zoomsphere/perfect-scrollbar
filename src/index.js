@@ -22,6 +22,7 @@ const defaultSettings = () => ({
   suppressScrollX: false,
   suppressScrollY: false,
   swipeEasing: true,
+  swipePropagation: true,
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
