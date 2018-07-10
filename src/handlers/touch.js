@@ -82,7 +82,7 @@ export default function(i) {
     if (!shouldHandle(e)) {
       return;
     }
-
+    console.log(`test`);
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }
