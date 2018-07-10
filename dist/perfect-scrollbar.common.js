@@ -725,7 +725,7 @@ var keyboard = function(i) {
 
 var wheel = function(i) {
   var element = i.element;
-  console.log("--- wheel", env);
+  console.warn("--- wheel", env);
   function shouldPreventDefault(deltaX, deltaY) {
     var roundedScrollTop = Math.floor(element.scrollTop);
     var isTop = element.scrollTop === 0;
@@ -878,7 +878,7 @@ var wheel = function(i) {
 };
 
 var touch = function(i) {
-  console.log("---", env);
+  console.warn("---", env);
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
@@ -954,11 +954,11 @@ var touch = function(i) {
   }
 
   function touchStart(e) {
-    console.log("test", e);
+    console.warn("test", e);
     if (!shouldHandle(e)) {
       return;
     }
-    console.log("test");
+    console.warn("test");
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }

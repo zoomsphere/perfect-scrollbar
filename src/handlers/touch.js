@@ -4,7 +4,7 @@ import * as CSS from '../lib/css';
 import { env } from '../lib/util';
 
 export default function(i) {
-  console.log(`---`, env)
+  console.warn(`---`, env)
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
@@ -80,11 +80,11 @@ export default function(i) {
   }
 
   function touchStart(e) {
-    console.log(`test`, e);
+    console.warn(`test`, e);
     if (!shouldHandle(e)) {
       return;
     }
-    console.log(`test`);
+    console.warn(`test`);
     if (!i.settings.swipePropagation) {
       e.stopPropagation();
     }
