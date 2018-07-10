@@ -876,6 +876,7 @@ var wheel = function(i) {
 };
 
 var touch = function(i) {
+  console.log("---", env);
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
@@ -1073,7 +1074,6 @@ var touch = function(i) {
       }, 10);
     }
   }
-  console.log("---", env);
   if (env.supportsTouch) {
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);

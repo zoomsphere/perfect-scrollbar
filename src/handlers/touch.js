@@ -4,6 +4,7 @@ import * as CSS from '../lib/css';
 import { env } from '../lib/util';
 
 export default function(i) {
+  console.log(`---`, env)
   if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
@@ -201,7 +202,6 @@ export default function(i) {
       }, 10);
     }
   }
-  console.log(`---`, env)
   if (env.supportsTouch) {
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
